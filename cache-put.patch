@@ -1,0 +1,9 @@
+--- src/http/ngx_http_upstream.c	2020-08-17 21:59:34.000000000 +0200
++++ src/http/ngx_http_upstream.c	2020-08-17 22:01:06.000000000 +0200
+@@ -458,6 +458,7 @@
+     { ngx_string("GET"), NGX_HTTP_GET },
+     { ngx_string("HEAD"), NGX_HTTP_HEAD },
+     { ngx_string("POST"), NGX_HTTP_POST },
++    { ngx_string("PUT"), NGX_HTTP_PUT },
+     { ngx_null_string, 0 }
+ };
