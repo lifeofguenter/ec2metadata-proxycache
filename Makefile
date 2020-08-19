@@ -1,6 +1,10 @@
 bold := $(shell tput bold)
 norm := $(shell tput sgr0)
 
+# defaults
+REPO_NAME 	?= $(notdir $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/..))/$(shell basename '$(PWD)')
+GIT_BRANCH 	?= dev
+
 # gh-actions shim
 ifdef GITHUB_REPOSITORY
 	REPO_NAME := $(GITHUB_REPOSITORY)
@@ -13,8 +17,6 @@ else ifneq (,$(findstring refs/tags/,$(GITHUB_REF)))
 	TAG_NAME := $(GITHUB_REF:refs/tags/%=%)
 endif
 endif
-
-REPO_NAME ?= $(notdir $(abspath $(dir $(lastword $(MAKEFILE_LIST)))/..))/$(shell basename '$(PWD)')
 
 
 $(info [REPO_NAME: $(REPO_NAME)])
@@ -33,6 +35,13 @@ build:
 	docker build \
 		-t '$(REPO_NAME)' \
 		.
+
+
+.PHONY: test
+test:
+	@echo -e "🔨🚨 $(bold)Testing$(norm) 🚨🔨"
+
+	docker run --rm '$(REPO_NAME)' -t
 
 
 .PHONY: publish

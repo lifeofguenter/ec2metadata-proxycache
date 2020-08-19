@@ -25,6 +25,9 @@ jobs:
       - name: build
         run: make build
 
+      - name: test
+        run: make test
+
       - name: publish
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
