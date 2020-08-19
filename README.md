@@ -12,8 +12,8 @@ safe to cache.
 
 ## Why?
 
-[We at TIDAL](/tidal-engineering) were running some issues on our Jenkins builds
-that heavily rely on terraform.
+[We at TIDAL](/tidal-engineering) were running into some issues on our Jenkins
+builds that heavily rely on terraform.
 
 During normal aws-cli usage (in this case ecr login):
 
